@@ -55,7 +55,11 @@ export default buildConfig({
     livePreview: { /* ... */ },
   },
   editor: defaultLexical,
-  db: postgresAdapter({ /* ... */ }),
+  db: postgresAdapter({
+    pool: {
+      connectionString: process.env.DATABASE_URI, // Ensure this environment variable is set
+    },
+  }),
   collections: [Pages, Posts, Media, Categories, Users, Services, Testimonials, Portfolio],
   cors: [getServerSideURL(), 'http://localhost:3000'].filter(Boolean),
   globals: [Header, Footer],
