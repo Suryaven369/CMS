@@ -7,7 +7,7 @@ import sharp from 'sharp'; // sharp-import remains
 
 // ===== CORRECTED CLOUD STORAGE IMPORTS =====
 import { cloudStoragePlugin } from '@payloadcms/plugin-cloud-storage'; // Named import for plugin
-import { s3 } from '@payloadcms/storage-s3';
+import { s3Storage } from '@payloadcms/storage-s3';
  // Default import for adapter
 // ==================================================
 
@@ -31,16 +31,15 @@ import { getServerSideURL } from './utilities/getURL';
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
-// ===== CONFIGURE S3 ADAPTER FOR SUPABASE =====
-// Using the default import 's3Adapter' here
-const adapter = s3({
+// ===== CONFIGURE S3 STORAGE FOR SUPABASE =====
+const s3Config = {
   endpoint: `https://${process.env.SUPABASE_PROJECT_REF}.supabase.co/storage/v1`,
   credentials: {
     accessKeyId: process.env.SUPABASE_ACCESS_KEY_ID || 'service_role',
     secretAccessKey: process.env.SUPABASE_SECRET_ACCESS_KEY || '',
   },
-  bucket: process.env.SUPABASE_BUCKET || '',
-});
+  region: process.env.SUPABASE_REGION || '',
+};
 // ============================================
 
 export default buildConfig({
@@ -64,16 +63,13 @@ export default buildConfig({
     // Include your other plugins
     ...otherPluginsFromExternalFile, // Use the renamed variable
 
-    // ===== ADD THE CONFIGURED CLOUD STORAGE PLUGIN =====
-    // *** USE THE CORRECT IMPORTED VARIABLE NAME HERE ***
-    cloudStoragePlugin({
+    // ===== ADD THE S3 STORAGE PLUGIN =====
+    s3Storage({
       collections: {
-        [Media.slug]: {
-          adapter: adapter, // Pass the S3 adapter instance
-          disableLocalStorage: true,
-          // prefix: 'media', // Optional prefix
-        },
+        [Media.slug]: true,
       },
+      config: s3Config,
+      bucket: process.env.SUPABASE_BUCKET || '',
     }),
     // ============================================================
   ],
