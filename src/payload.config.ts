@@ -94,4 +94,5 @@ export default buildConfig({
     },
     tasks: [],
   },
+  cors: ['http://localhost:3000'],
 })
