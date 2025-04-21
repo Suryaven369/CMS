@@ -7,7 +7,7 @@ import sharp from 'sharp'; // sharp-import remains
 
 // ===== CORRECTED CLOUD STORAGE IMPORTS =====
 import { cloudStoragePlugin } from '@payloadcms/plugin-cloud-storage'; // Named import for plugin
-import { s3Adapter } from '@payloadcms/storage-s3'; // Default import for adapter
+import { createStorageAdapter } from '@payloadcms/storage-s3'; // Default import for adapter
 // ==================================================
 
 // Your Collections and Globals
