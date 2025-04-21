@@ -44,8 +44,7 @@ export const Media: CollectionConfig = {
       name: 'caption',
       type: 'richText',
       editor: lexicalEditor({
-        features: ({ defaultFeatures }) => [
-          ...defaultFeatures,
+        features: [
           FixedToolbarFeature(),
           InlineToolbarFeature(),
         ],
@@ -53,7 +52,7 @@ export const Media: CollectionConfig = {
     },
   ],
   upload: {
-    adapter,
+    //
     disableLocalStorage: true,
     adminThumbnail: 'thumbnail',
     focalPoint: true,
