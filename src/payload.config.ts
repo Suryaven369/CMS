@@ -8,6 +8,9 @@ import { fileURLToPath } from 'url'
 
 import { Categories } from './collections/Categories'
 import { Media } from './collections/Media'
+import { Services } from './collections/Services'
+import { Testimonials } from './collections/Testimonials'
+import Portfolio from './collections/Portfolio'
 import { Pages } from './collections/Pages'
 import { Posts } from './collections/Posts'
 import { Users } from './collections/Users'
@@ -64,7 +67,7 @@ export default buildConfig({
       connectionString: process.env.DATABASE_URI || '',
     },
   }),
-  collections: [Pages, Posts, Media, Categories, Users],
+  collections: [Pages, Posts, Media, Categories, Users , Services, Testimonials, Portfolio],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],
   plugins: [
