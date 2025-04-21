@@ -7,7 +7,7 @@ import sharp from 'sharp' // sharp-import remains
 
 // ===== ADD CLOUD STORAGE IMPORTS =====
 import cloudStoragePlugin from '@payloadcms/plugin-cloud-storage'; // <-- Use default import
-import { s3Adapter } from '@payloadcms/storage-s3';
+import  s3Adapter  from '@payloadcms/storage-s3';
 // ======================================
 
 // Your Collections and Globals
