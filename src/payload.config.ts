@@ -80,5 +80,7 @@ export default buildConfig({
   secret: process.env.PAYLOAD_SECRET,
   sharp,
   typescript: { /* ... */ },
-  jobs: { /* ... */ },
+  jobs: {
+    tasks: [],
+  },
 });
