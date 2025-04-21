@@ -55,7 +55,7 @@ ENV NODE_ENV=production
 # DO NOT hardcode sensitive production secrets here.
 ENV PAYLOAD_SECRET=your_secure_payload_secret_at_runtime
 ENV DATABASE_URI=your_database_uri_at_runtime
-ENV PORT=3000 # Set default port
+ENV PORT=3000  
 
 # Create non-root user and group
 RUN addgroup --system --gid 1001 nodejs
